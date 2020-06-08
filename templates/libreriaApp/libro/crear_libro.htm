@@ -1,0 +1,99 @@
+{% extends 'index.htm' %}
+{% block titulo %}Crear Libro{% endblock titulo %}
+
+{% block contenido %}
+
+    
+    <!-- Content page -->
+    <div class="container-fluid">
+        <div class="page-header">
+          <h1 class="text-titles"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Libros </h1>
+        </div>
+    </div>
+
+
+
+    <!-- Panel nuevo cliente -->
+    <div class="container-fluid">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; Nuevo Libro</h3>
+            </div>
+            <div class="panel-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend><i class="zmdi zmdi-account-box"></i> &nbsp; Información </legend>
+                        <div class="container-fluid">
+                            {% if form.errors %}    
+                              {{ form.errors }}
+                            {% endif %}
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                          <label class="control-label">ISBN</label>
+                                          {{form.isbn}}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                          <label class="control-label">Titulo</label>
+                                            <input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}"  class="form-control" type="text" name="titulo" required="" maxlength="30">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                          <label class="control-label"> </label>
+                                            <input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}"  class="form-control" type="date" name="fecha_pub" required="" maxlength="30">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                          <label class="control-label">Categoria</label>
+                                          {{form.id_categorias}}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                          <label class="control-label"> Precio</label>
+                                            <input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}"  class="form-control" type="number" name="precio" required="" maxlength="30">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                <div class="col-xs-12">
+		    					    <div class="form-group"> 
+		    						<span class="control-label">Imágen</span>
+									{{ form.portada }}
+									<div class="input-group">
+										<input type="text" readonly="" class="form-control" name="portada" placeholder="Elija la portada del Libro...">
+										<span class="input-group-btn input-group-sm">
+											<button type="button" class="btn btn-fab btn-fab-mini">
+												<i class="zmdi zmdi-attachment-alt"></i>
+											</button>
+										</span>
+									</div>
+									<span><small>Tamaño máximo de los archivos adjuntos 5MB. Tipos de archivos permitidos imágenes: PNG, JPEG y JPG</small></span>
+								</div>
+		    				</div>
+                                </div>
+                                
+                            
+                                
+                            </div>
+                        </div>
+                    </fieldset>
+                    <br>
+                    
+                    <p class="text-center" style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock contenido %}

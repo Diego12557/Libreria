@@ -1,0 +1,88 @@
+{% extends 'index.htm' %} 
+{% load static %}
+{% block titulo %} Listar Autor {% endblock titulo %} 
+{% block contenido %}
+<div class="container-fluid">
+    <ul class="breadcrumb breadcrumb-tabs">
+        <li>
+            <a href="{% url 'libreriaApp:crear_autor' %}" class="btn btn-info">
+                <i class="zmdi zmdi-plus"></i> &nbsp; NUEVO AUTOR
+            </a>
+        </li>
+        <li>
+            <a href="" class="btn btn-primary">
+                <i class="zmdi zmdi-search"></i> &nbsp; BUSCAR AUTOR
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!-- Panel listado de clientes -->
+<div class="container-fluid">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE AUTORES</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover text-center">
+
+                    {% if autores %}
+
+                    <thead>
+                        <tr>
+                            <th class="text-center">Id</th>
+                            <th class="text-center">Nombres</th>
+                            <th class="text-center">Apellidos</th>
+                            <th class="text-center">Acciones</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for autores in autores %}
+                            <td>{{ autores.id_autor }}</td>
+                            <td>{{autores.nombres}}</td>
+                            <td>{{autores.apellidos}}</td>
+                            <td>
+                                
+                                <button class="btn btn-danger" type="button" onclick="abrirModalEliminacion('{% url 'libreriaApp:eliminar_autor' autores.id_autor %}')">
+                                    <i class="fas fa-user-plus"></i>
+                                </button>
+          
+                                <button class="btn btn-primary" type="button" onclick="abrirModalEdicion('{% url 'libreriaApp:editar_autor' autores.id_autor %}')">
+                                    <i class="fas fa-user-plus"></i>
+                                </button>
+                            </td>
+
+
+                        </tr>
+
+
+                        {% endfor %}
+
+                    </tbody>
+                    {% else %}
+                    <h1>No hay registros</h1>
+                    {% endif%} </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modales -->
+<div class="modal fade" id="eliminacion" role="dialog"> 
+
+</div>
+
+<div class="modal fade" id="edicion" role="dialog"> 
+
+{% block extrajs %}
+  <script src= "{% static 'js/modales/modals.js' %}"></script>
+{% endblock extrajs %}
+</div>
+
+
+{% endblock contenido %}
+

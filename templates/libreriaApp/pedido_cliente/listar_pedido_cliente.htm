@@ -1,0 +1,91 @@
+{% extends 'index.htm' %} 
+{% load static %}
+{% block titulo %} Listar Pedido Cliente {% endblock titulo %} 
+
+{% block contenido %}
+    <div class="container-fluid">
+    <ul class="breadcrumb breadcrumb-tabs">
+        <li>
+            <a href="{% url 'libreriaApp:crear_pedido_cliente' %}" class="btn btn-info">
+                <i class="zmdi zmdi-plus"></i> &nbsp; NUEVO PEDIDO CLIENTE
+            </a>
+        </li>
+        <li>
+            <a href="" class="btn btn-primary">
+                <i class="zmdi zmdi-search"></i> &nbsp; BUSCAR PEDIDO CLIENTE
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!-- Panel listado de clientes -->
+<div class="container-fluid">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DEL PEDIDOS CLIENTES</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover text-center">
+
+                    {% if pedido_cliente %}
+
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nro_Pedido</th>
+                            <th class="text-center">Id_Cliente</th>
+                            <th class="text-center">Isbn</th>
+                            <th class="text-center">Fecha_Pedido</th>
+                            <th class="text-center">Cantidad</th>
+                            <th class="text-center">Valor</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for pedido_cliente in pedido_cliente %}
+                            <td>{{pedido_cliente.nro_pedido}}</td>
+                            <td>{{pedido_cliente.id_cliente}}</td>
+                            <td>{{pedido_cliente.isbn}}</td>
+                            <td>{{pedido_cliente.fecha_pedido}}</td>
+                            <td>{{pedido_cliente.cantidad}}</td>
+                            <td>{{pedido_cliente.valor}}</td>
+                            <td>
+                                
+                                <button class="btn btn-danger" type="button" onclick="abrirModalEliminacion('')">
+                                    <i class="fas fa-user-plus"></i>
+                                </button>
+          
+                                <button class="btn btn-primary" type="button" onclick="abrirModalEdicion('')">
+                                    <i class="fas fa-user-plus"></i>
+                                </button>
+                            </td>
+
+
+                        </tr>
+
+
+                        {% endfor %}
+
+                    </tbody>
+                    {% else %}
+                    <h1>No hay registros</h1>
+                    {% endif%} </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="eliminacion" role="dialog"> 
+
+</div>
+
+<div class="modal fade" id="edicion" role="dialog"> 
+
+{% block extrajs %}
+  <script src= "{% static 'js/modales/modals.js' %}"></script>
+{% endblock extrajs %}
+</div>
+
+{% endblock contenido %}

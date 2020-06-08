@@ -1,0 +1,77 @@
+{% extends 'index.htm' %}
+{% load static %}
+{% block titulo %}Listar Categorias{% endblock titulo %}
+
+{% block contenido %}
+
+    <div class="container-fluid">
+        <div class="page-header">
+          <h1 class="text-titles"><i class="zmdi zmdi-labels zmdi-hc-fw"></i> Categorias</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <ul class="breadcrumb breadcrumb-tabs">
+              <li>
+                  <a href="{% url 'libreriaApp:crear_categorias'%}" class="btn btn-info">
+                      <i class="zmdi zmdi-plus"></i> &nbsp; NUEVA CATEORÍA
+                  </a>
+              </li>
+        </ul>
+    </div>
+
+    <!-- Panel listado de categorias -->
+    <div class="container-fluid">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE CATEORÍAS</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover text-center">
+                        {% if categorias %}
+                        <thead>
+                            <tr>
+                                <th class="text-center">Id</th>
+                                <th class="text-center">Nombre de Categoria</th>
+                                <th class="text-center">Acciones</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for categorias in categorias %}
+                                <td>{{ categorias.id_categorias }}</td>
+                                <td>{{ categorias.categorias }}</td>
+                                <td>
+                                    <button class="btn btn-danger" type="button" onclick="abrirModalEliminacion('{% url 'libreriaApp:eliminar_categorias' categorias.id_categorias %}')">
+                                        Eliminar
+                                    </button>
+                                    <button class="btn btn-primary" type="button" onclick="abrirModalEdicion('{% url 'libreriaApp:editar_categorias' categorias.id_categorias %}')">
+                                        Editar
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        {% else %}
+                    <h1>No hay registros</h1>
+                    {% endif%} </table>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="eliminacion" role="dialog"> 
+
+    </div>
+    
+    <div class="modal fade" id="edicion" role="dialog"> 
+    
+    {% block extrajs %}
+      <script src= "{% static 'js/modales/modals.js' %}"></script>
+    {% endblock extrajs %}
+    </div>
+
+{% endblock contenido %}
