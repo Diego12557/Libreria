@@ -38,6 +38,8 @@
                             <th class="text-center">Telefono</th>
                             <th class="text-center">Direccion</th>
                             <th class="text-center">Correo_Electronico</th>
+                            <th class="text-center">Actualizar</th>
+                            <th class="text-center">Eliminar</th>
 
                         </tr>
                     </thead>
@@ -52,16 +54,16 @@
                             <td>{{cliente.correo_electronico}}</td>
                             
                             <td>
-                                
-                                <button class="btn btn-danger" type="button" onclick="{% url 'libreriaApp:eliminar_cliente' cliente.id_cliente %}">
-                                    <i class="fas fa-user-plus"></i>
-                                </button>
-          
-                                <button class="btn btn-primary" type="button" onclick="abrirModalEdicion('{% url 'libreriaApp:editar_autor' cliente.id_cliente %}')">
-                                    <i class="fas fa-user-plus"></i>
-                                </button>
+                                    <a href="#!" class="btn btn-success btn-raised btn-xs">
+                                        <i class="zmdi zmdi-refresh"></i>
+                                    </a>
                             </td>
-
+                            
+                            <td>
+                                <a href="#!" class="btn btn-success btn-raised btn-xs">
+                                    <i class="zmdi zmdi-refresh"></i>
+                                </a>
+                            </td>
 
                         </tr>
 

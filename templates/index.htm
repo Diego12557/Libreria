@@ -49,9 +49,7 @@
                         <li>
                             <a href="{% url 'libreriaApp:listar_cliente' %}"><i class="fas fa-user"></i> Cliente </a>
                         </li>
-                        <li>
-                            <a href="{% url 'libreriaApp:listar_libro_por_autor' %}"><i class="fas fa-book-reader"></i> Libro por Autor</a>
-                        </li>
+                        
                         <li>
                             <a href="{% url 'libreriaApp:listar_libro' %}"><i class="fas fa-book"></i>  Libro</a>
                         </li>
@@ -74,12 +72,15 @@
                 <li class="pull-left ">
                     <a href="#! " class="btn-menu-dashboard "><i class="zmdi zmdi-more-vert "></i></a>
                 </li>
+            <form method="POST">
+                {% csrf_token %}
                 <li>
-                    <a href="search.html " class="btn-search ">
-                        <i class="zmdi zmdi-search "></i>
-                    </a>
+                    <a href="{% url 'logout' %}"><i class=""></i> Cerrar</a>
+				
                 </li>
+            </form>
             </ul>
+            
         </nav>
 
         <!-- contenido  -->

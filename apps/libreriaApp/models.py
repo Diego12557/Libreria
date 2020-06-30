@@ -34,7 +34,7 @@ class Cliente(models.Model):
     apellidos = models.CharField(max_length=25, blank = False, null = False)
     telefono = models.CharField(max_length=12, blank = False, null = False)
     direccion = models.CharField(max_length=128, blank=True, null=True)
-    correo_electronico = models.CharField(max_length=128, blank = False, null = False)
+    correo_electronico = models.EmailField(max_length=128, blank = False, null = False)
 
     class Meta:
         ordering = ['id_cliente']
@@ -77,7 +77,7 @@ class PedidosCliente(models.Model):
     isbn = models.ForeignKey(Libros, on_delete = models.CASCADE)
     fecha_pedido = models.DateField(auto_now = True, auto_now_add = False)
     cantidad = models.IntegerField()
-    valor = models.IntegerField()
+    valor = models.IntegerField(blank = True, null = True)
 
     class Meta:
         ordering = ['nro_pedido']

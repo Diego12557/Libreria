@@ -41,13 +41,13 @@
                         <tbody>
                             <tr>
                                 {% for categorias in categorias %}
-                                <td>{{ categorias.id_categorias }}</td>
-                                <td>{{ categorias.categorias }}</td>
+                                <td>{{ categorias.id_categoria }}</td>
+                                <td>{{ categorias.categoria }}</td>
                                 <td>
-                                    <button class="btn btn-danger" type="button" onclick="abrirModalEliminacion('{% url 'libreriaApp:eliminar_categorias' categorias.id_categorias %}')">
+                                    <button class="btn btn-danger" type="button">
                                         Eliminar
                                     </button>
-                                    <button class="btn btn-primary" type="button" onclick="abrirModalEdicion('{% url 'libreriaApp:editar_categorias' categorias.id_categorias %}')">
+                                    <button class="btn btn-primary" type="button">
                                         Editar
                                     </button>
                                 </td>

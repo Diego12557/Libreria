@@ -21,17 +21,15 @@ class CrearAutor(CreateView):
     success_url = reverse_lazy('libreriaApp:listar_autores')
 
 
-class EditarAutor(UpdateView):
-    model = Autores
-    form_class = AutorForm
-    template_name = 'libreriaApp/autores/editar_autor.htm'
-    success_url = reverse_lazy('libreriaApp:listar_autores')
+def editarAutor(request, id):
+    pass
 
-class EliminarAutor(DeleteView):
-    model = Autores
-    form_class = AutorForm
-    template_name = 'libreriaApp/autores/eliminar_autor.htm'
-    success_url = reverse_lazy('libreriaApp:listar_autores')
+
+
+def eliminarAutor(request, id):
+    autor = Autores.objects.get(id_autor = id)
+    autor.delete()
+    return redirect('libreriaApp:listar_autores') 
 
 def listar_autores(request):
     autores = Autores.objects.all()

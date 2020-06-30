@@ -31,6 +31,7 @@
                             <th class="text-center">Titulo</th>
                             <th class="text-center">Fecha de publicacion</th>
                             <th class="text-center">Categoria</th>
+                            <th class="text-center">Autor</th>
                             <th class="text-center">Precio</th>
                             <th class="text-center">Portada</th>
                             <th class="text-center">Acciones</th>
@@ -44,10 +45,20 @@
                             <td>{{ libro.isbn }}</td>
                             <td>{{ libro.titulo }}</td>
                             <td>{{ libro.fecha_pub }}</td>
-                            <td>{{ libro.id_categorias }}</td>
+                            <td>{{ libro.categoria }}</td>
+                            <td>
+                            {% for autor in libro.id_autor.all %}
+                                <li>{{ autor.nombres}} {{ autor.apellidos}}</li>
+                            {% endfor %}
+                            </td>
                             <td>{{ libro.precio }}</td>
-                            <td>{{ libro.portada }}</td>
-                            
+                            <td>
+                            {% if libro.portada == "" %}
+                                No hay portada
+                            {% else %}
+                                <img src="{{ libro.portada.url }}" alt="" height="60" width="80">
+                            {% endif %}
+                            </td> 
                             
                             <td>
                                 

@@ -10,6 +10,12 @@
             </a>
         </li>
         <li>
+         
+            <a href="{% url 'libreriaApp:crear_pedido_cliente' %}" class="btn btn-info"
+                <i class="zmdi zmdi-plus"></i> &nbsp; Carrito de compras
+            </a>
+        </li>
+        <li>
             <a href="" class="btn btn-primary">
                 <i class="zmdi zmdi-search"></i> &nbsp; BUSCAR AUTOR
             </a>
@@ -45,14 +51,11 @@
                             <td>{{autores.nombres}}</td>
                             <td>{{autores.apellidos}}</td>
                             <td>
+                                <a href = "{% url 'libreriaApp:eliminar_autor' autores.id_autor %}">Eliminar<a/>
+                            </td>
+
+                            <td>
                                 
-                                <button class="btn btn-danger" type="button" onclick="abrirModalEliminacion('{% url 'libreriaApp:eliminar_autor' autores.id_autor %}')">
-                                    <i class="fas fa-user-plus"></i>
-                                </button>
-          
-                                <button class="btn btn-primary" type="button" onclick="abrirModalEdicion('{% url 'libreriaApp:editar_autor' autores.id_autor %}')">
-                                    <i class="fas fa-user-plus"></i>
-                                </button>
                             </td>
 
 
