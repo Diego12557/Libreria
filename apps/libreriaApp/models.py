@@ -1,4 +1,5 @@
 from django.db import models
+from apps.usuarioApp.models import Usuario
 
 class Autores(models.Model):
     id_autor = models.AutoField(primary_key=True)
@@ -27,28 +28,6 @@ class Categorias(models.Model):
         )
 
 
-class Cliente(models.Model):
-    id_cliente = models.AutoField(primary_key=True)
-    identificacion = models.CharField(max_length=12, blank = False, null = False)
-    nombres = models.CharField(max_length=25, blank = False, null = False)
-    apellidos = models.CharField(max_length=25, blank = False, null = False)
-    telefono = models.CharField(max_length=12, blank = False, null = False)
-    direccion = models.CharField(max_length=128, blank=True, null=True)
-    correo_electronico = models.EmailField(max_length=128, blank = False, null = False)
-
-    class Meta:
-        ordering = ['id_cliente']
-
-    def __str__(self):
-        return '{} - {} - {} - {} - {} - {}'.format(
-            self.id_cliente,
-            self.identificacion,
-            self.nombres,
-            self.apellidos,
-            self.telefono,
-            self.correo_electronico
-        )
-
 
 class Libros(models.Model):
     isbn = models.IntegerField(primary_key=True)
@@ -72,19 +51,17 @@ class Libros(models.Model):
 
 class PedidosCliente(models.Model):
     id_pedido = models.AutoField(primary_key=True)
-    nro_pedido = models.CharField(unique=True, max_length=255, blank = False, null = False)
-    id_cliente = models.ForeignKey(Cliente, on_delete = models.CASCADE)
+    id_cliente = models.ForeignKey(Usuario, on_delete = models.CASCADE)
     isbn = models.ForeignKey(Libros, on_delete = models.CASCADE)
     fecha_pedido = models.DateField(auto_now = True, auto_now_add = False)
     cantidad = models.IntegerField()
     valor = models.IntegerField(blank = True, null = True)
 
     class Meta:
-        ordering = ['nro_pedido']
+        ordering = ['id_pedido']
 
     def __str__(self):
-        return '{} - {} - {} - {} - {}'.format(
-            self.nro_pedido,
+        return '{} - {} - {} - {} '.format(
             self.id_cliente,
             self.isbn,
             self.cantidad,

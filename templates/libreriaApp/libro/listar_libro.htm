@@ -15,6 +15,7 @@
 
 <!-- Panel listado de clientes -->
 <div class="container-fluid">
+{{ form.errors }}
     <div class="panel panel-success">
         <div class="panel-heading">
             <h3 class="panel-title"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE LIBROS </h3>
@@ -35,6 +36,7 @@
                             <th class="text-center">Precio</th>
                             <th class="text-center">Portada</th>
                             <th class="text-center">Acciones</th>
+                            <th class="text-center">Comprar</th>
                            
 
                         </tr>
@@ -62,13 +64,24 @@
                             
                             <td>
                                 
-                                <button class="btn btn-danger" type="button" onclick="abrirModalEliminacion('')">
-                                    <i class="fas fa-user-plus"></i>
-                                </button>
-          
-                                <button class="btn btn-primary" type="button" onclick="abrirModalEdicion('')">
-                                    <i class="fas fa-user-plus"></i>
-                                </button>
+                                    <a href = "{% url 'libreriaApp:eliminar_libro' libro.isbn %}" class="btn btn-danger" >
+                                        <i class="far fa-window-close"></i>
+                                    </a>
+            
+                                    <a href = "{% url 'libreriaApp:editar_libro' libro.isbn %}" class="btn btn-primary" >
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                            </td>
+
+                            <td>
+                                <form action="{% url 'libreriaApp:crear_pedido_cliente'  %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id_cliente" value="{{ user.id }}">
+                                    <input type="hidden" name="isbn" value ="{{ libro.isbn }}">
+                                    <center><input type="number" name="cantidad" style="width: 50px; height: 25px;" value="1" ></center>
+                                    <br>
+                                    <center><button type="submit" class="btn btn-success" ><i class="fas fa-shopping-cart fa-2x"></i></button></center>
+                                </form>
                             </td>
 
 

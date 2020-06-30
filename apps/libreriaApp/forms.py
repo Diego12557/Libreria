@@ -1,7 +1,7 @@
 from django import forms
-from .models import Cliente, Autores, Categorias, Libros, PedidosCliente
+from .models import Autores, Categorias, Libros, PedidosCliente
 
-class ClienteForm(forms.ModelForm):
+""" class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = ['identificacion','nombres','apellidos','telefono','direccion','correo_electronico']
@@ -44,7 +44,7 @@ class ClienteForm(forms.ModelForm):
                 }
             )
         }
-
+ """
 class AutorForm(forms.ModelForm):
     class Meta:
         model = Autores
@@ -139,15 +139,9 @@ class LibroForm(forms.ModelForm):
 class PedidoClienteForm(forms.ModelForm):
     class Meta:
         model = PedidosCliente
-        fields = ['nro_pedido','id_cliente', 'isbn', 'cantidad']
+        fields = ['id_cliente', 'isbn', 'cantidad']
 
         widgets = {
-            'nro_pedido': forms.NumberInput(
-                attrs = {
-                    'class': 'form-control',
-                    'placeholder': 'Número de Pedido'
-                }
-            ),
             'id_cliente': forms.Select(
                 attrs = {
                     'class': 'form-control'

@@ -25,6 +25,7 @@ from apps.usuarioApp.views import Login,logoutUsuario
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('libreriaApp/',include(('apps.libreriaApp.urls','libreriaApp'))),
+    path('usuarioApp/',include(('apps.usuarioApp.urls','usuarioApp'))),
     path('home/', Home, name = 'index'),
     path('accounts/login/',Login.as_view(), name = 'login'),
     path('logout/',login_required(logoutUsuario), name = 'logout')

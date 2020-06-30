@@ -44,12 +44,13 @@
                                 <td>{{ categorias.id_categoria }}</td>
                                 <td>{{ categorias.categoria }}</td>
                                 <td>
-                                    <button class="btn btn-danger" type="button">
-                                        Eliminar
-                                    </button>
-                                    <button class="btn btn-primary" type="button">
-                                        Editar
-                                    </button>
+                                    <a href="{% url 'libreriaApp:eliminar_categorias' categorias.id_categoria %}" class="btn btn-danger" >
+                                        <i class="far fa-window-close"></i>
+                                    </a>
+            
+                                    <a href = "{% url 'libreriaApp:editar_categorias' categorias.id_categoria %}" class="btn btn-primary" >
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
                                 </td>
                             </tr>
                             {% endfor %}

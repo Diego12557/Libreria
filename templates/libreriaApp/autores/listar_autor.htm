@@ -50,12 +50,17 @@
                             <td>{{ autores.id_autor }}</td>
                             <td>{{autores.nombres}}</td>
                             <td>{{autores.apellidos}}</td>
-                            <td>
-                                <a href = "{% url 'libreriaApp:eliminar_autor' autores.id_autor %}">Eliminar<a/>
-                            </td>
 
                             <td>
                                 
+                                <a href = "{% url 'libreriaApp:eliminar_autor' autores.id_autor %}" class="btn btn-danger" >
+                                    <i class="far fa-window-close"></i>
+                                </a>
+          
+                                <a href = "{% url 'libreriaApp:editar_autor' autores.id_autor %}" class="btn btn-primary" >
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+
                             </td>
 
 

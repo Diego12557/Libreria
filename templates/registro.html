@@ -1,0 +1,25 @@
+{% load static  %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'registro.css' %}">
+    <title>Registrate</title>
+</head>
+
+<body>
+    <div class="container" id="advanced-search-form">
+        <h2>Advanced Search</h2>
+        <form method="POST">
+        {% csrf_token %}
+           {{ form.as_p }}
+            <div class="clearfix"></div>
+            <button type="submit" class="btn btn-info btn-lg btn-responsive" id="search"> <span class="glyphicon glyphicon-search"></span> Registrarse</button>
+        </form>
+    </div>
+</body>
+
+</html>

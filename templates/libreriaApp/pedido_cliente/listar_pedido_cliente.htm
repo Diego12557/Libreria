@@ -44,7 +44,7 @@
                     <tbody>
                         <tr>
                             {% for pedido_cliente in pedido_cliente %}
-                            <td>{{pedido_cliente.nro_pedido}}</td>
+                            <td>{{pedido_cliente.id_pedido}}</td>
                             <td>{{pedido_cliente.id_cliente}}</td>
                             <td>{{pedido_cliente.isbn}}</td>
                             <td>{{pedido_cliente.fecha_pedido}}</td>
@@ -53,12 +53,9 @@
                             <td>
                                 
                                 <button class="btn btn-danger" type="button" onclick="abrirModalEliminacion('')">
-                                    <i class="fas fa-user-plus"></i>
+                                    <i class="far fa-window-close"></i>
                                 </button>
           
-                                <button class="btn btn-primary" type="button" onclick="abrirModalEdicion('')">
-                                    <i class="fas fa-user-plus"></i>
-                                </button>
                             </td>
 
 
