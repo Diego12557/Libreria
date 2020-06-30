@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (listar_autores, CrearAutor, EditarAutor, eliminarAutor, eliminar_categoria,
 CrearCategorias,listar_categorias,EditarCategoria, listar_libro,CrearLibro, eliminar_libro,
-EditarLibro,listar_pedido_cliente,CrearPedidoCliente,EditarPedidoCliente,EliminarPedidoCliente)
+EditarLibro,listar_pedido_cliente,CrearPedidoCliente,EditarPedidoCliente, eliminar_pedido)
 
 urlpatterns = [
    
@@ -31,6 +31,6 @@ urlpatterns = [
    path('listar_pedido_cliente/', listar_pedido_cliente, name = 'listar_pedido_cliente'),
    path('crear_pedido_cliente/', CrearPedidoCliente.as_view(), name = 'crear_pedido_cliente'),
    path('editar_pedido_cliente/<int:pk>', EditarPedidoCliente.as_view(), name = 'editar_pedido_cliente'),
-   path('eliminar_pedido_cliente/<int:pk>', EliminarPedidoCliente.as_view(), name = 'eliminar_pedido_cliente'),
+   path('eliminar_pedido_cliente/<int:id_pedido>', eliminar_pedido, name = 'eliminar_pedido_cliente'),
 
 ]

@@ -194,11 +194,10 @@ class EditarPedidoCliente(UpdateView):
     success_url = reverse_lazy('libreriaApp:listar_pedido_cliente')
 
 
-class EliminarPedidoCliente(DeleteView):
-    model = PedidosCliente
-    form_class = PedidoClienteForm
-    template_name = 'libreriaApp/pedido_cliente/eliminar_pedido_cliente.htm'
-    success_url = reverse_lazy('libreriaApp:listar_pedido_cliente')
+def eliminar_pedido(request, id_pedido):
+    pedido = PedidosCliente.objects.get(id_pedido = id_pedido)
+    pedido.delete()
+    return redirect('libreriaApp:listar_pedido_cliente')
 
     
 

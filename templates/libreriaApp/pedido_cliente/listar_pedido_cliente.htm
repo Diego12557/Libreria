@@ -52,9 +52,9 @@
                             <td>{{pedido_cliente.valor}}</td>
                             <td>
                                 
-                                <button class="btn btn-danger" type="button" onclick="abrirModalEliminacion('')">
+                                <a href="{% url 'libreriaApp:eliminar_pedido_cliente' pedido_cliente.id_pedido  %}" class="btn btn-danger">
                                     <i class="far fa-window-close"></i>
-                                </button>
+                                </a>
           
                             </td>
 
